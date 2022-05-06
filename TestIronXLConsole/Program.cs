@@ -15,6 +15,8 @@ List<String> columnHeaderList = new();
 //Fill data table with fake data
 for (int i = 0; i < 10; i++)
 {
+    //Here we give a name to the DataTable's columns.
+    //Would be great if IronXl could automatically retrieve them and use them as the first line of the excel file.
     t.Columns.Add($"Col{i}", typeof(String));
 
     columnHeaderList.Add($"Col{i}");    //We fill a list with colum header names. This can be avoided if IronXl could grab the names from the DataTable's columns captions
@@ -25,8 +27,6 @@ for (int x = 0; x < 1000; x++)
     DataRow row = t.NewRow();
     for (int i = 0; i < t.Columns.Count; i++)
     {
-        //Here we give a name to the DataTable's columns.
-        //Would be great if IronXl could automatically retrieve them and use them as the first line of the excel file.
         row[$"Col{i}"] = $"row {x} col {i}";    
     }
     t.Rows.Add(row);
